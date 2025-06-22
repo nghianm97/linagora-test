@@ -27,24 +27,24 @@ const GamePlay: React.FC<GamePlayProps> = ({
     const config = choice ? getChoiceConfig(choice) : null;
 
     return (
-      <div className="flex flex-col items-center space-y-4 px-3">
-        {/* Label at top */}
-        <p className="text-white text-2xl font-semibold tracking-wider uppercase whitespace-nowrap">
+      <div className="flex flex-col items-center space-y-4 px-2 md:px-4">
+        {/* Label - Desktop: above, Mobile: below */}
+        <p className="hidden md:block text-white text-lg font-semibold tracking-wider uppercase text-center">
           {label}
         </p>
         
         <div 
           className={`
-            relative w-40 h-40 rounded-full 
+            relative w-32 h-32 md:w-40 md:h-40 rounded-full
             ${isHidden 
               ? 'bg-gradient-to-b from-gray-700 to-gray-800 animate-pulse' 
               : config 
                 ? `bg-gradient-to-b ${config.gradient}` 
                 : 'bg-gray-300'
             }
-            border-8 border-white
+            border-4 md:border-8 border-white
             flex items-center justify-center
-            ${isWinner ? 'ring-8 ring-white ring-opacity-30 shadow-2xl' : ''}
+            ${isWinner ? 'ring-4 md:ring-8 ring-white ring-opacity-30 shadow-2xl' : ''}
             transition-all duration-500
           `}
           style={{
@@ -61,26 +61,30 @@ const GamePlay: React.FC<GamePlayProps> = ({
           )}
           
           {/* Inner circle */}
-          <div className="w-28 h-28 bg-white rounded-full flex items-center justify-center shadow-inner relative z-10">
+          <div className="w-20 h-20 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center shadow-inner relative z-10">
             {!isHidden && config ? (
-              <img 
-                src={config.icon} 
+              <img
+                src={config.icon}
                 alt={choice}
-                className="w-14 h-14"
+                className="w-10 h-10 md:w-14 md:h-14"
               />
             ) : isHidden ? (
-              <div className="w-14 h-14 bg-gray-400 rounded-full animate-pulse"></div>
+              <div className="w-10 h-10 md:w-14 md:h-14 bg-gray-400 rounded-full animate-pulse"></div>
             ) : null}
           </div>
         </div>
 
+        {/* Label - Mobile: below circle */}
+        <p className="block md:hidden text-white text-lg font-semibold tracking-wider uppercase text-center whitespace-nowrap">
+          {label}
+        </p>
       </div>
     );
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[400px] px-8">
-      <div className="flex items-center justify-center w-full max-w-4xl gap-16 md:gap-24 lg:gap-32">
+    <div className="flex items-center justify-center min-h-[400px] px-4 md:px-8">
+      <div className="flex items-center justify-center w-full max-w-4xl gap-8 md:gap-16 lg:gap-24 xl:gap-32">
         {/* Player choice */}
         <ChoiceDisplay
           choice={playerChoice}

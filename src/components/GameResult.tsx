@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { type Choice } from './GameChoice';
 import { CHOICE_CONFIGS, RESULT_TEXT, UI_LABELS } from '../constants';
@@ -30,7 +31,7 @@ const GameResult: React.FC<GameResultProps> = ({
     label: string;
     isWinner: boolean;
     isPlayer?: boolean;
-  }> = ({ choice, label, isWinner, isPlayer }) => {
+  }> = ({ choice, label, isWinner }) => {
     const config = getChoiceConfig(choice);
 
     return (
@@ -44,11 +45,12 @@ const GameResult: React.FC<GameResultProps> = ({
           </>
         )}
 
-        {/* Label - Desktop: above, Mobile: below */}
-        <p className={`hidden md:block text-white text-2xl font-semibold tracking-wider uppercase text-center whitespace-nowrap ${isPlayer ? 'left-0' : 'right-0'}`}>
+        {/* Desktop: Label above circle */}
+        <p className="hidden md:block text-white text-lg font-semibold tracking-wider uppercase text-center">
           {label}
         </p>
 
+        {/* Circle */}
         <div
           className={`
             relative w-32 h-32 md:w-40 md:h-40 rounded-full
@@ -73,7 +75,7 @@ const GameResult: React.FC<GameResultProps> = ({
           </div>
         </div>
 
-        {/* Label - Mobile: below circle */}
+        {/* Mobile: Label below circle */}
         <p className="block md:hidden text-white text-lg font-semibold tracking-wider uppercase text-center whitespace-nowrap">
           {label}
         </p>
@@ -127,17 +129,8 @@ const GameResult: React.FC<GameResultProps> = ({
       <div className="flex md:hidden flex-col items-center space-y-6 w-full max-w-sm px-4">
         {/* Choices row */}
         <div className="flex items-center justify-center gap-4 sm:gap-6">
-          <ChoiceDisplay
-            choice={playerChoice}
-            label={UI_LABELS.PLAYER_CHOICE}
-            isWinner={result === 'win'}
-            isPlayer={true}
-          />
-          <ChoiceDisplay
-            choice={computerChoice}
-            label={UI_LABELS.COMPUTER_CHOICE}
-            isWinner={result === 'lose'}
-          />
+          <ChoiceDisplay choice={playerChoice} label="YOU PICKED" isWinner={result === 'win'} />
+          <ChoiceDisplay choice={computerChoice} label="THE HOUSE PICKED" isWinner={result === 'lose'} />
         </div>
 
         {/* Result section below */}
@@ -167,3 +160,8 @@ const GameResult: React.FC<GameResultProps> = ({
 };
 
 export default GameResult;
+
+
+
+
+
