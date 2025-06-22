@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import GameChoice, { type Choice } from './GameChoice';
 import GamePlay from './GamePlay';
 import GameResult, { type GameResult as GameResultType } from './GameResult';
