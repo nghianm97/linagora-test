@@ -98,7 +98,7 @@ const Game = ({ mode } : GameProps) => {
   };
 
   return (
-    <div className="">
+    <div className="w-full">
       {/* Header */}
       <header className="flex justify-between items-center p-6 mx-auto border-2 border-gray-400 rounded-2xl">
         <div className="flex items-center">

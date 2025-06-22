@@ -27,9 +27,9 @@ const GamePlay: React.FC<GamePlayProps> = ({
     const config = choice ? getChoiceConfig(choice) : null;
 
     return (
-      <div className="flex flex-col items-center space-y-4">
-        {/* Label - Desktop: above, Mobile: below */}
-        <p className="hidden md:block text-white text-lg font-semibold tracking-wider uppercase text-center">
+      <div className="flex flex-col items-center space-y-4 px-3">
+        {/* Label at top */}
+        <p className="text-white text-2xl font-semibold tracking-wider uppercase whitespace-nowrap">
           {label}
         </p>
         
@@ -48,7 +48,7 @@ const GamePlay: React.FC<GamePlayProps> = ({
             transition-all duration-500
           `}
           style={{
-            boxShadow: !isHidden && config ? config.boxShadow : undefined  // ✅ Custom shadow
+            boxShadow: !isHidden && config ? config.boxShadow : undefined
           }}
         >
           {/* Winner glow effect */}
@@ -74,10 +74,6 @@ const GamePlay: React.FC<GamePlayProps> = ({
           </div>
         </div>
 
-        {/* Label - Mobile: below circle */}
-        <p className="block md:hidden text-white text-lg font-semibold tracking-wider uppercase text-center">
-          {label}
-        </p>
       </div>
     );
   };

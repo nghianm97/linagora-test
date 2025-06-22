@@ -18,7 +18,7 @@ const RulesButton = ({ mode, setMode }: RulesButtonProps) => {
 
   return (
     <>
-      <div className='fixed bottom-6 right-6 flex gap-3'>
+      <div className='md:fixed bottom-20 md:bottom-6 right-6 flex gap-3'>
         <button onClick={() => setMode("")} className='hover:bg-red-400 bg-red-500 text-white py-3 px-5'>Back</button>
         <button
           onClick={openModal}

@@ -53,14 +53,14 @@ const GameChoice: React.FC<GameChoiceProps> = ({ onChoice, mode }) => {
   );
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
+    <div className="flex flex-col items-center justify-center min-h-[400px] p-4 md:p-8">
       {choices.map((row, rowIndex) => (
         <div
           key={rowIndex}
           className={`
             flex justify-center
-            ${rowIndex < choices.length - 1 ? (mode === 'bonus' ? 'mb-6' : 'mb-8') : ''}
-            ${row[0].length > 1 ? 'gap-16' : ''}
+            ${rowIndex < choices.length - 1 ? (mode === 'bonus' ? 'mb-4 md:mb-6' : 'mb-6 md:mb-8') : ''}
+            ${row[0].length > 1 ? 'gap-8 md:gap-16' : ''}
           `}
         >
           {row[0].map(choice => renderButton(choice))}
